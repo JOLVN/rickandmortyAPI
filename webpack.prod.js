@@ -34,6 +34,10 @@ config = {
                 test: /\.html/,
                 loader: 'html-loader',
             },
+            {
+                test: /\.hbs/,
+                loader: 'handlebars-loader',
+            },
             /*
              * Test des fichiers .scss
              * MiniCssExtractPlugin.loader : extrait le code CSS importé dans les fichiers JavaScript

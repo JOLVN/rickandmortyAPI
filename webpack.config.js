@@ -16,6 +16,10 @@ config = {
                 loader: 'html-loader',
             },
             {
+                test: /\.hbs/,
+                loader: 'handlebars-loader',
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
