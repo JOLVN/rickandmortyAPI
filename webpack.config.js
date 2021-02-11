@@ -43,6 +43,10 @@ config = {
             template: './src/index.html',
             filename: 'index.html'
         }),
+        new HtmlWebpackPlugin({
+            template: './src/characters.html',
+            filename: 'characters.html'
+        }),
         new ESLintPlugin({
             context: path.resolve(__dirname, 'src'),
             files: 'js/**/*.js',
