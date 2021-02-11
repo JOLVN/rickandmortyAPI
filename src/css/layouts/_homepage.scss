@@ -1,19 +1,9 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  width: 90%;
-  margin: auto;
-  text-align: center;
-  z-index: 1;
-  @extend %opacity-transition;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.container__home {
+  max-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../img/image_header.svg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100vh;
 }

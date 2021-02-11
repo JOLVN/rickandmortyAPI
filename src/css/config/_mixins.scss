@@ -1,7 +1,15 @@
-%opacity-transition {
-  opacity: 0;
-  transition: opacity 0.25s ease-in;
-  &.is-ready {
-    opacity: 1;
-  }
+@mixin absolute-el($top, $right, $bottom, $left, $x, $y) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  transform: translate($x, $y);
+}
+
+@mixin center-el($width) {
+  width: $width;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
