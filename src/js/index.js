@@ -1,32 +1,21 @@
 import '../css/app.scss'
-import $ from 'jquery'
 import Header from './header'
+import Data from './data'
+import Character from './character'
 
 class App {
     constructor () {
       this.initApp()
-      console.log("test")
 
     }
     
     initApp () {
       // Start application
       new Header()
-      this.api()
+      new Data()
+      new Character()
     }
   
-    api() {
-      const url = 'https://rickandmortyapi.com/api/character';
-
-      $.ajaxSetup({cache: false}) // enlever le cache
-      $.getJSON(url) // récupérer l'API
-        .then((response) => {
-          console.log(response)
-        } )
-        .catch((error) => {
-          console.log('Error quote', error)
-        } )
-    }
 }
 
 new App()

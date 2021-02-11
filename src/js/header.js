@@ -1,7 +1,7 @@
 // Pour importer le menu dans la balise avec la classe "menu"
 
 
-import MenuTemplate from '../parts/components/menu.hbs'
+import MenuTemplate from '../templates/menu.hbs'
 
 
 export default class Header {
