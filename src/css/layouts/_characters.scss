@@ -1,0 +1,8 @@
+.characters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.character {
+  background-color: $color-grey;
+}

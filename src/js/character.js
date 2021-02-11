@@ -19,10 +19,13 @@ export default class character {
 
   getDatas() {
     if (this.datas.response == undefined) {
-      setTimeout(() => {
-        this.readyDatas()
-      }, 600)
-    }
+      const timer = setInterval(() => {
+        if (this.datas.response != undefined) {
+          clearInterval(timer)
+          this.readyDatas()
+        }
+      }, 100)
+    } 
   }
 
   readyDatas() {
@@ -34,9 +37,17 @@ export default class character {
   }
 
   returnDatas(i) {
+    const result = this.datas.response.results[i]
     const character = CharacterTemplate({
-      name: this.datas.response.results[i].name
+      name: result.name,
+      image: result.image,
+      species: result.species,
+      gender: result.gender,
+      episode: result.episode[0],
+      origin: result.origin.name,
+      status: result.status
     })
+    
     let div = document.createElement('div');
     div.classList.add('character')
     this.characters.appendChild(div)
