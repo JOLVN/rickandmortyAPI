@@ -1,14 +1,16 @@
 import '../css/app.scss';
 import $ from 'jquery';
+import Header from './header'
 
 class App {
     constructor () {
       this.initApp();
     }
-
+    
     initApp () {
       // Start application
-
+      new Header();
+      this.api();
     }
   
     api() {
