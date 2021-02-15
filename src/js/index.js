@@ -2,6 +2,7 @@ import '../css/app.scss'
 import Header from './header'
 import Data from './data'
 import Character from './character'
+import SearchBar from './searchBar'
 
 class App {
     constructor () {
@@ -14,6 +15,7 @@ class App {
       new Header()
       new Data()
       new Character()
+      new SearchBar()
     }
   
 }
