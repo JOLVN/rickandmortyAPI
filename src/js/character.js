@@ -48,11 +48,10 @@ export default class character {
       status: result.status
     })
     
-    let div = document.createElement('div');
-    div.classList.add('character')
-    this.characters.appendChild(div)
-    div.innerHTML = character
-    console.log(this.datas.response);
+    let li = document.createElement('li');
+    li.classList.add('character')
+    this.characters.appendChild(li)
+    li.innerHTML = character
   }
 
 }

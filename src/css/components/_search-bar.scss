@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
 
-  &.search-bar__characters {
+  &:not(.search-bar__home) {
     margin-top: 10rem;
     margin-bottom: 8rem;;
   }
@@ -41,4 +41,9 @@
   height: 4rem;
   background-image: url('../img/icons/search.svg');
   background-size: cover;
+}
+
+.highlighted {
+  background-color: white;
+  color: black;
 }
