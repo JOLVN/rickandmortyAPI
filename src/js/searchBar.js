@@ -71,6 +71,7 @@ export default class SearchBar {
         let res = span.innerText.match(new RegExp(regexp, 'i'))
         this.string = ''
         if (res) {
+          // Surligner les lettres recherchées
           for (let i in res) {
             if (i > 0) {
               if (i % 2 == 0) {
@@ -82,8 +83,8 @@ export default class SearchBar {
           }
           span.innerText = ""
           span.innerHTML = this.string
-          // span.append(this.string)
         } else {
+          // Cacher les personnages non recherchés
           if (!span.classList.contains('highlighted')) {
             span.parentNode.parentNode.style.display = "none"
           }
@@ -96,9 +97,9 @@ export default class SearchBar {
 
   showLi() {
     let li = this.list.querySelectorAll('li')
-      li.forEach((li) => {
-        li.style.display = "block"
-      })
+    li.forEach((li) => {
+      li.style.display = "block"
+    })
   }
 
 }

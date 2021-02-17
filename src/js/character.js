@@ -1,5 +1,6 @@
-import Data from './data'
+import { getUrl } from './getUrl'
 import CharacterTemplate from '../templates/character.hbs'
+import $ from 'jquery'
 
 export default class character {
 
@@ -9,7 +10,7 @@ export default class character {
   }
 
   initElements() {
-    this.datas = new Data()
+    this.urlCharacters = getUrl('character', 1)
     this.characters = document.querySelector('.characters')
   }
 
@@ -18,26 +19,29 @@ export default class character {
   }
 
   getDatas() {
-    if (this.datas.response == undefined) {
-      const timer = setInterval(() => {
-        if (this.datas.response != undefined) {
-          clearInterval(timer)
-          this.readyDatas()
-        }
-      }, 100)
-    } 
+    for (let i = 1; i < 30; i++) {
+      $.ajaxSetup({ cache: false }) // enlever le cache
+      $.getJSON(this.urlCharacters) // récupérer l'API
+        .then((response) => {
+          this.readyDatas(response);
+        })
+        .catch((error) => {
+          console.log('Error api', error)
+        })
+      this.urlCharacters = getUrl('character', i)
+    }
   }
 
-  readyDatas() {
+  readyDatas(response) {
     if (this.characters != null) {
-      for (let i = 0; i < this.datas.response.results.length ; i++) {
-        this.returnDatas(i)
+      for (let i = 0; i < response.results.length ; i++) {
+        this.returnDatas(response, i)
       }
     }
   }
 
-  returnDatas(i) {
-    const result = this.datas.response.results[i]
+  returnDatas(response, i) {
+    const result = response.results[i]
     const character = CharacterTemplate({
       name: result.name,
       image: result.image,
