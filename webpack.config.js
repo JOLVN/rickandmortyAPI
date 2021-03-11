@@ -51,6 +51,10 @@ config = {
             template: './src/locations.html',
             filename: 'locations.html'
         }),
+        new HtmlWebpackPlugin({
+            template: './src/episodes.html',
+            filename: 'episodes.html'
+        }),
         new ESLintPlugin({
             context: path.resolve(__dirname, 'src'),
             files: 'js/**/*.js',

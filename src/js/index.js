@@ -1,6 +1,8 @@
 import '../css/app.scss'
 import Header from './header'
 import Character from './character'
+import Location from './location'
+import Episode from './episode'
 import SearchBar from './searchBar'
 
 class App {
@@ -13,6 +15,8 @@ class App {
       // Start application
       new Header()
       new Character()
+      new Location()
+      new Episode()
       new SearchBar()
     }
   

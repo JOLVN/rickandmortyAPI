@@ -8,8 +8,6 @@ export default class character {
   constructor() {
     this.initElements()
     this.initEvents()
-    this.pressButton()
-    this.searchCharacter()
   }
 
   initElements() {
@@ -18,10 +16,16 @@ export default class character {
     this.loadPage = 1
     this.button = document.querySelector('input[type="button"]')
     this.searchDiv = document.querySelector('.search-bar')
+    this.episode = []
   }
 
   initEvents() {
-    this.getDatas(this.loadPage)
+    if (this.characters != undefined) {
+
+      this.getDatas(this.loadPage)
+      this.pressButton()
+      this.searchCharacter()
+    }
   }
 
 
@@ -30,7 +34,7 @@ export default class character {
     this.urlCharacters = getUrl('character', loadPage)
       $.ajaxSetup({ cache: false })
       $.getJSON(this.urlCharacters) 
-        .then((response) => {
+        .then((response) => { 
           this.readyDatas(response);
         })
         .catch((error) => {
@@ -51,7 +55,28 @@ export default class character {
   }
   // Charger plus de personnages
 
+  changeColorStatus() {
+    // let statusColor = document.querySelectorAll('.color')
+    let characters = document.querySelectorAll('.character')
+    characters.forEach((char) => {
+      let status = char.querySelector('.status__character')
+      let color = char.querySelector('.color')
+      switch (status.innerText) {
+        case 'Alive':
+          color.style.backgroundColor = "green"
+          break;
+        case 'Dead':
+          color.style.backgroundColor = "red"
+          break;
+        default:
+          color.style.backgroundColor = "orange"
+          break;
+      }
+    })
+  }
+  
 
+  // Permet de faire une recherche
   searchCharacter() {
     this.searchDiv.addEventListener('keyup', () => {
       let input = this.searchDiv.querySelector('input[type="text"]')
@@ -73,23 +98,39 @@ export default class character {
   }
 
 
-  // Afficher les données
+  // Parcours la réponse et lance la fonction permettant de trouver l'episode
   readyDatas(response) {
     if (this.characters != null) {
-      for (let i = 0; i < response.results.length ; i++) {
-        this.returnDatas(response, i)
+      for (let i = 0; i < response.results.length; i++) {
+        this.getEpisode(response, i)
       }
+      this.changeColorStatus()
     }
   }
+  
+  // Trouve l'épisode et lance la fonction qui permet de retourner les données
+  getEpisode(responseData, i) {
+    const result = responseData.results[i]
+    $.ajaxSetup({ cache: false })
+    $.getJSON(result.episode[0]) 
+      .then((response) => {
+        this.episode[i] = response.episode
+        this.returnDatas(result, i)
+        this.changeColorStatus()
+      })
+      .catch((error) => {
+        console.log('Error api', error)
+      })
+  }
 
-  returnDatas(response, i) {
-    const result = response.results[i]
+  // Retourne les données
+  returnDatas(result, i) {
     const character = CharacterTemplate({
       name: result.name,
       image: result.image,
       species: result.species,
       gender: result.gender,
-      episode: result.episode[0],
+      episode: this.episode[i],
       origin: result.origin.name,
       status: result.status
     })
@@ -99,6 +140,5 @@ export default class character {
     this.characters.appendChild(li)
     li.innerHTML = character
   }
-  // Afficher les données
 
 }
