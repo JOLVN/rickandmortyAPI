@@ -4,12 +4,19 @@
 @import "config/variables";
 @import "config/mixins";
 @import "config/global";
+@import "config/text";
 
 // Layouts
 @import "layouts/homepage";
+@import "layouts/elements";
 @import "layouts/characters";
+@import "layouts/locations";
+@import "layouts/episodes";
 
 // Components
 @import "components/menu";
 @import "components/search-bar";
 @import "components/button";
+
+// Responsive
+@import "responsive";

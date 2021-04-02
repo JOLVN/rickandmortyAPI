@@ -92,8 +92,8 @@ export default class character {
   returnDatas(result) {
     const episode = EpisodeTemplate({
       name: result.name,
-      type: result.type,
-      dimension: result.dimension,
+      episode: result.episode,
+      date: result. air_date
     })
     
     let li = document.createElement('li');

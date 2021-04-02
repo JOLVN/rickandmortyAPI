@@ -12,18 +12,15 @@ export default class SearchBar {
   }
 
   initEvents() {
-    this.placeholder()
-    // this.filterSearch()
+    if (this.searchDiv != null) {
+      this.placeholder()
+    }
 
   }
 
 
   placeholder() {
-    if (this.searchDiv.classList.contains('search-bar__home')) {
-      this.placeholderStr = "Search a character, location or episode"
-      this.injectTemplate(this.placeholderStr)
-    }
-    else if (this.searchDiv.classList.contains('search-bar__characters')) {
+    if (this.searchDiv.classList.contains('search-bar__characters')) {
       this.placeholderStr = "Search a character"
       this.injectTemplate(this.placeholderStr)
     }

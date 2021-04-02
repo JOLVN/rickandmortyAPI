@@ -1,0 +1,45 @@
+@media screen and (max-width: 1024px) {
+
+  html {
+    font-size: 57%;
+  }
+
+  .elements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .character {
+    width: 40vw;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  html {
+    font-size: 50%;
+  }
+
+  .menu nav a {
+    margin: 0 2rem;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+
+  html {
+    font-size: 40%;
+  }
+  
+  .elements {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .character {
+    width: 80vw;
+  }
+
+
+}

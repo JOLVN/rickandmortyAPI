@@ -6,3 +6,34 @@
   background-repeat: no-repeat;
   background-position: bottom;
 }
+
+.container__home h2 {
+  margin-top: 15rem;
+}
+
+.categories {
+  height: 75vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category {
+  width: 60%;
+  height: 10rem;
+  background-color: $color-grey;
+  border-radius: 30px;
+}
+
+.category h3 {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.category:hover {
+  box-shadow: 3px 4px 30px 4px $color-green;
+  transition: box-shadow 0.5s;
+}
